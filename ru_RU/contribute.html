@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ru_RU">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>Внести свой вклад в GORM | GORM - The fantastic ORM library for Golang, aims to be developer friendly.</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://gorm.io/ru_RU/contribute.html">
+  <!-- Alternative links -->
+  
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/icon/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/icon/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/icon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/icon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/icon/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+  <meta name="generator" content="Hexo 4.2.1">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  
+<link rel="stylesheet" href="/css/navy.css">
+
+  <!-- endbuild -->
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <!-- RSS -->
+  <link rel="alternate" href="/atom.xml" title="GORM">
+  <!-- Open Graph -->
+  <meta name="description" content="Вы можете помочь сделать GORM лучше! есть много вещей, которые вы можете сделать: Помогите другим узнать GORM Поделитесь GORM с миром по социальным сетям, или просто расскажите людям, которым это може">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Внести свой вклад в GORM">
+<meta property="og:url" content="http://gorm.io/ru_RU/contribute.html">
+<meta property="og:site_name" content="GORM">
+<meta property="og:description" content="Вы можете помочь сделать GORM лучше! есть много вещей, которые вы можете сделать: Помогите другим узнать GORM Поделитесь GORM с миром по социальным сетям, или просто расскажите людям, которым это може">
+<meta property="og:locale" content="ru_RU">
+<meta property="article:published_time" content="2020-07-31T02:43:18.497Z">
+<meta property="article:modified_time" content="2020-07-31T02:43:18.497Z">
+<meta property="article:author" content="Jinzhu">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="zhangjinzhu">
+  <!-- Google Tag Manager -->
+  
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WSNPD75');</script>
+
+
+</head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/ru_RU/" id="logo">GORM</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/ru_RU/docs/" class="main-nav-link"><i class="fa fa-book"></i>Документация</a><a href="/ru_RU/community.html" class="main-nav-link"><i class="fa fa-slack"></i>Сообщество</a><a href="https://pkg.go.dev/gorm.io/gorm" class="main-nav-link" target="_blank"><i class="fa fa-cogs"></i>API</a><a href="/ru_RU/contribute.html" class="main-nav-link"><i class="fa fa-rocket"></i>Внести вклад</a>
+      <div id="search-input-wrap">
+        <div id="search-input-icon">
+          <i class="fa fa-search"></i>
+        </div>
+        <input type="search" id="search-input" placeholder="Поиск в документации...">
+      </div>
+    </nav>
+    <div id="lang-select-wrap">
+      <label id="lang-select-label"><i class="fa fa-globe"></i><span>Русский</span></label>
+      <select id="lang-select" data-canonical="">
+        
+          <option value="en">English</option>
+        
+          <option value="zh_CN">简体中文</option>
+        
+          <option value="de_DE">Deutsch</option>
+        
+          <option value="es_ES">Español</option>
+        
+          <option value="id_ID">bahasa Indonesia</option>
+        
+          <option value="it_IT">Italiano</option>
+        
+          <option value="ja_JP">日本語</option>
+        
+          <option value="ru_RU" selected>Русский</option>
+        
+          <option value="fr_FR">French</option>
+        
+          <option value="ko_KR">한국어</option>
+        
+      </select>
+    </div>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">Внести свой вклад в GORM</h1>
+                
+                <a href="https://translate.gorm.io/project/go-gorm/ru" target="_blank" rel="noopener" class="article-edit-link" title="Улучшить эту страницу"><i class="fa fa-pencil"></i></a>
+                
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <html><head></head><body><p><strong>Вы можете помочь сделать GORM лучше! есть много вещей, которые вы можете сделать:</strong></p>
+<h2 id="Помогите-другим-узнать-GORM" class="article-heading"><a href="#Помогите-другим-узнать-GORM" class="headerlink" title="Помогите другим узнать GORM"></a>Помогите другим узнать GORM<a class="article-anchor" href="#Помогите-другим-узнать-GORM" aria-hidden="true"></a></h2><ul>
+<li>Поделитесь GORM с миром по социальным сетям, или просто расскажите людям, которым это может быть интересно</li>
+<li>Помогите новичкам решать проблемы на <a href="https://stackoverflow.com/questions/tagged/go-gorm" target="_blank" rel="noopener">Stack Overflow</a>, <a href="https://github.com/go-gorm/gorm/issues" target="_blank" rel="noopener">Github Issues</a> и в <a href="/community.html#Chat">Чатах</a></li>
+<li>Написать руководства, видео записи и т.д… (Не забудьте добавить их в <a href="/community.html">список</a>)</li>
+<li>Помогите продвижению GORM на GitHub <a href="https://github.com/go-gorm/gorm/stargazers" target="_blank" rel="noopener">Оценивая</a> и <a href="https://github.com/go-gorm/gorm/watchers" target="_blank" rel="noopener">Отслеживая</a> репозиторий <a href="https://github.com/go-gorm/gorm" target="_blank" rel="noopener">GORM</a></li>
+</ul>
+<h2 id="Документация-и-написание" class="article-heading"><a href="#Документация-и-написание" class="headerlink" title="Документация и написание"></a>Документация и написание<a class="article-anchor" href="#Документация-и-написание" aria-hidden="true"></a></h2><ul>
+<li>Сделать документацию GORM лучше, написав новый контент или исправив существующий материал</li>
+</ul>
+<h3 id="Перевести-этот-сайт" class="article-heading"><a href="#Перевести-этот-сайт" class="headerlink" title="Перевести этот сайт"></a>Перевести этот сайт<a class="article-anchor" href="#Перевести-этот-сайт" aria-hidden="true"></a></h3><p>Вы можете перевести текущий сайт с помощью <a href="https://translate.gorm.io" target="_blank" rel="noopener">https://translate.gorm.io</a></p>
+<p>Чтобы перевести GORM на свой язык, вам нужно отправить запрос в сервисе <a href="https://github.com/go-gorm/gorm.io/issues" target="_blank" rel="noopener">Github issues</a> для добавления своего языка в портале <a href="https://translate.gorm.io" target="_blank" rel="noopener">https://translate.gorm.io</a>.</p>
+<h2 id="Программа" class="article-heading"><a href="#Программа" class="headerlink" title="Программа"></a>Программа<a class="article-anchor" href="#Программа" aria-hidden="true"></a></h2><ul>
+<li>Создайте Pull Request на <a href="https://github.com/go-gorm/gorm" target="_blank" rel="noopener">Github</a> для исправления ошибок или добавления новых функций</li>
+<li>Создавайте плагины с открытым исходным кодом для GORM (Не забудьте добавить их в <a href="/community.html#Open-Sources">список</a>)</li>
+</ul>
+<h2 id="Пожертвования" class="article-heading"><a href="#Пожертвования" class="headerlink" title="Пожертвования"></a>Пожертвования<a class="article-anchor" href="#Пожертвования" aria-hidden="true"></a></h2><p>Большое спасибо всем нашим спонсорам!</p>
+<h3 id="Разовые-пожертвования" class="article-heading"><a href="#Разовые-пожертвования" class="headerlink" title="Разовые пожертвования"></a>Разовые пожертвования<a class="article-anchor" href="#Разовые-пожертвования" aria-hidden="true"></a></h3><p>Ваша доброта и щедрость высоко ценится</p>
+<p><a href="https://www.paypal.me/zhangjinzhu" target="_blank" rel="noopener">Разовые пожертвования с помощью Paypal</a> <a href="https://opencollective.com/gorm" target="_blank" rel="noopener">Разовые пожертвования с помощью OpenCollective</a></p>
+<h3 id="Периодические-пожертвования" class="article-heading"><a href="#Периодические-пожертвования" class="headerlink" title="Периодические пожертвования"></a>Периодические пожертвования<a class="article-anchor" href="#Периодические-пожертвования" aria-hidden="true"></a></h3><p>Ваша доброта и щедрость высоко ценится, и ваше имя будет указано на этой странице или на домашней странице этого сайта.</p>
+<p><a href="https://opencollective.com/gorm" target="_blank" rel="noopener">Периодические пожертвования с помощью OpenCollective</a> <a href="https://www.patreon.com/jinzhu" target="_blank" rel="noopener">Периодические пожертвования с помощью Patreon</a></p>
+<br>
+
+<h2 id="Спонсоры" class="article-heading"><a href="#Спонсоры" class="headerlink" title="Спонсоры"></a>Спонсоры<a class="article-anchor" href="#Спонсоры" aria-hidden="true"></a></h2><h2 id="Покровители" class="article-heading"><a href="#Покровители" class="headerlink" title="Покровители"></a>Покровители<a class="article-anchor" href="#Покровители" aria-hidden="true"></a></h2></body></html>
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2020-07-31T02:43:18.497Z" itemprop="dateModified">Последнее обновление: 2020-07-31</time>
+
+              </footer>
+              
+<section id="comments">
+<div id="disqus_thread"></div>
+</sction>
+
+<script>
+var disqus_config = function () {
+this.page.url = 'http://gorm.io/ru_RU/contribute.html';
+this.page.identifier = 'http://gorm.io/ru_RU/contribute.html';
+this.language = 'ru';
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://gormv2.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+
+
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <div id="sidebar-ad-wrapper" class="tagmanager_ad"></div>
+              <strong class="sidebar-title">Содержимое</strong>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Помогите-другим-узнать-GORM"><span class="toc-text">Помогите другим узнать GORM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Документация-и-написание"><span class="toc-text">Документация и написание</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Перевести-этот-сайт"><span class="toc-text">Перевести этот сайт</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Программа"><span class="toc-text">Программа</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Пожертвования"><span class="toc-text">Пожертвования</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Разовые-пожертвования"><span class="toc-text">Разовые пожертвования</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Периодические-пожертвования"><span class="toc-text">Периодические пожертвования</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Спонсоры"><span class="toc-text">Спонсоры</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Покровители"><span class="toc-text">Покровители</span></a></li></ol>
+
+              
+                <a href="https://translate.gorm.io/project/go-gorm/ru" target="_blank" id="article-improve">
+                  Улучшить эту страницу
+                </a>
+              
+              <a href="#" id="article-toc-top">Вернуться к началу</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner">
+    
+  </div>
+</aside>
+
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2013~2020 <a href="https://github.com/jinzhu" target="_blank">Jinzhu</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a>.<br>
+    </div>
+    <div id="footer-links">
+      <a href="https://twitter.com/zhangjinzhu" class="footer-link" target="_blank"><i class="fa fa-twitter"></i></a>
+      <a href="https://github.com/go-gorm/gorm" class="footer-link" target="_blank"><i class="fa fa-github-alt"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <li class="mobile-nav-item">
+        <a href="/" class="mobile-nav-link" rel="external" target="_blank"><i class="fa fa-home"></i>Главная</a>
+      </li>
+      <a href="/ru_RU/docs/" class="mobile-nav-link"><i class="fa fa-book"></i>Документация</a><a href="/ru_RU/community.html" class="mobile-nav-link"><i class="fa fa-slack"></i>Сообщество</a><a href="https://pkg.go.dev/gorm.io/gorm" class="mobile-nav-link" target="_blank"><i class="fa fa-cogs"></i>API</a><a href="/ru_RU/contribute.html" class="mobile-nav-link"><i class="fa fa-rocket"></i>Внести вклад</a>
+    </ul>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>Русский</span></span>
+    <select id="mobile-lang-select" data-canonical="">
+      
+        <option value="en">English</option>
+      
+        <option value="zh_CN">简体中文</option>
+      
+        <option value="de_DE">Deutsch</option>
+      
+        <option value="es_ES">Español</option>
+      
+        <option value="id_ID">bahasa Indonesia</option>
+      
+        <option value="it_IT">Italiano</option>
+      
+        <option value="ja_JP">日本語</option>
+      
+        <option value="ru_RU" selected>Русский</option>
+      
+        <option value="fr_FR">French</option>
+      
+        <option value="ko_KR">한국어</option>
+      
+    </select>
+  </div>
+</nav>
+
+  <!-- Scripts -->
+<!-- build:js build/js/main.js -->
+
+<script src="/js/lang_select.js"></script>
+
+
+<script src="/js/toc.js"></script>
+
+
+<script src="/js/mobile_nav.js"></script>
+
+
+<script src="//code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+<script src="/js/code_expander.js"></script>
+
+
+<script src="/js/404_fix.js"></script>
+
+<!-- endbuild -->
+
+<!-- Algolia -->
+
+
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WSNPD75"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+
+</body>
+</html>

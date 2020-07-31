@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ru_RU">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>Запрос | GORM - The fantastic ORM library for Golang, aims to be developer friendly.</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://gorm.io/ru_RU/docs/query.html">
+  <!-- Alternative links -->
+  
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/icon/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/icon/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/icon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/icon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/icon/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+  <meta name="generator" content="Hexo 4.2.1">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  
+<link rel="stylesheet" href="/css/navy.css">
+
+  <!-- endbuild -->
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <!-- RSS -->
+  <link rel="alternate" href="/atom.xml" title="GORM">
+  <!-- Open Graph -->
+  <meta name="description" content="Получение одного объектаGORM предоставляет методы First, Take, Last для получения одного объекта из базы данных, метод добавляет условие LIMIT 1 при запросе к базе данных, если запись не найдена, верн">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Запрос">
+<meta property="og:url" content="http://gorm.io/ru_RU/docs/query.html">
+<meta property="og:site_name" content="GORM">
+<meta property="og:description" content="Получение одного объектаGORM предоставляет методы First, Take, Last для получения одного объекта из базы данных, метод добавляет условие LIMIT 1 при запросе к базе данных, если запись не найдена, верн">
+<meta property="og:locale" content="ru_RU">
+<meta property="article:published_time" content="2020-07-31T02:43:18.497Z">
+<meta property="article:modified_time" content="2020-07-31T02:43:18.497Z">
+<meta property="article:author" content="Jinzhu">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="zhangjinzhu">
+  <!-- Google Tag Manager -->
+  
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WSNPD75');</script>
+
+
+</head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/ru_RU/" id="logo">GORM</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/ru_RU/docs/" class="main-nav-link"><i class="fa fa-book"></i>Документация</a><a href="/ru_RU/community.html" class="main-nav-link"><i class="fa fa-slack"></i>Сообщество</a><a href="https://pkg.go.dev/gorm.io/gorm" class="main-nav-link" target="_blank"><i class="fa fa-cogs"></i>API</a><a href="/ru_RU/contribute.html" class="main-nav-link"><i class="fa fa-rocket"></i>Внести вклад</a>
+      <div id="search-input-wrap">
+        <div id="search-input-icon">
+          <i class="fa fa-search"></i>
+        </div>
+        <input type="search" id="search-input" placeholder="Поиск в документации...">
+      </div>
+    </nav>
+    <div id="lang-select-wrap">
+      <label id="lang-select-label"><i class="fa fa-globe"></i><span>Русский</span></label>
+      <select id="lang-select" data-canonical="docs/query.html">
+        
+          <option value="en">English</option>
+        
+          <option value="zh_CN">简体中文</option>
+        
+          <option value="de_DE">Deutsch</option>
+        
+          <option value="es_ES">Español</option>
+        
+          <option value="id_ID">bahasa Indonesia</option>
+        
+          <option value="it_IT">Italiano</option>
+        
+          <option value="ja_JP">日本語</option>
+        
+          <option value="ru_RU" selected>Русский</option>
+        
+          <option value="fr_FR">French</option>
+        
+          <option value="ko_KR">한국어</option>
+        
+      </select>
+    </div>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">Запрос</h1>
+                
+                <a href="https://translate.gorm.io/project/go-gorm/ru" target="_blank" rel="noopener" class="article-edit-link" title="Улучшить эту страницу"><i class="fa fa-pencil"></i></a>
+                
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <html><head></head><body><h2 id="Получение-одного-объекта" class="article-heading"><a href="#Получение-одного-объекта" class="headerlink" title="Получение одного объекта"></a>Получение одного объекта<a class="article-anchor" href="#Получение-одного-объекта" aria-hidden="true"></a></h2><p>GORM предоставляет методы <code>First</code>, <code>Take</code>, <code>Last</code> для получения одного объекта из базы данных, метод добавляет условие <code>LIMIT 1</code> при запросе к базе данных, если запись не найдена, вернется ошибка <code>ErrRecordNotFound</code></p>
+<figure class="highlight go"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment">// Получить первую запись с сортировкой по первичному ключу</span></span><br><span class="line">db.First(&user)</span><br><span class="line"><span class="comment">// SELECT * FROM users ORDER BY id LIMIT 1;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Получить одну запись, без сортировки</span></span><br><span class="line">db.Take(&user)</span><br><span class="line"><span class="comment">// SELECT * FROM users LIMIT 1;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Получить последнюю запись, с сортировкой по первичному ключу</span></span><br><span class="line">db.Last(&user)</span><br><span class="line"><span class="comment">// SELECT * FROM users ORDER BY id DESC LIMIT 1;</span></span><br><span class="line"></span><br><span class="line">result := db.First(&user)</span><br><span class="line">result.RowsAffected <span class="comment">// возвращает количество найденных записей</span></span><br><span class="line">result.Error        <span class="comment">// возвращает ошибку</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//  проверить на существование ошибки ErrRecordNotFound</span></span><br><span class="line">errors.Is(result.Error, gorm.ErrRecordNotFound)</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="Получение-объектов" class="article-heading"><a href="#Получение-объектов" class="headerlink" title="Получение объектов"></a>Получение объектов<a class="article-anchor" href="#Получение-объектов" aria-hidden="true"></a></h2><figure class="highlight go"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment">// Получить все записи</span></span><br><span class="line">result := db.Find(&users)</span><br><span class="line"><span class="comment">// SELECT * FROM users;</span></span><br><span class="line"></span><br><span class="line">result.RowsAffected <span class="comment">// возвращает количество найденных записей, аналогично `len(users)`</span></span><br><span class="line">result.Error        <span class="comment">// возвращает ошибку</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="Условия" class="article-heading"><a href="#Условия" class="headerlink" title="Условия"></a>Условия<a class="article-anchor" href="#Условия" aria-hidden="true"></a></h2><h3 id="Строковые-условия" class="article-heading"><a href="#Строковые-условия" class="headerlink" title="Строковые условия"></a>Строковые условия<a class="article-anchor" href="#Строковые-условия" aria-hidden="true"></a></h3><figure class="highlight go"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment">// Получить первую найденную запись</span></span><br><span class="line">db.Where(<span class="string">"name = ?"</span>, <span class="string">"jinzhu"</span>).First(&user)</span><br><span class="line"><span class="comment">// SELECT * FROM users WHERE name = 'jinzhu' ORDER BY id LIMIT 1;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Получить все найденные записи</span></span><br><span class="line">db.Where(<span class="string">"name <> ?"</span>, <span class="string">"jinzhu"</span>).Find(&users)</span><br><span class="line"><span class="comment">// SELECT * FROM users WHERE name <> 'jinzhu';</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// условие IN</span></span><br><span class="line">db.Where(<span class="string">"name IN ?"</span>, []<span class="keyword">string</span>{<span class="string">"jinzhu"</span>, <span class="string">"jinzhu 2"</span>}).Find(&users)</span><br><span class="line"><span class="comment">// SELECT * FROM users WHERE name in ('jinzhu','jinzhu 2');</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// условие LIKE</span></span><br><span class="line">db.Where(<span class="string">"name LIKE ?"</span>, <span class="string">"%jin%"</span>).Find(&users)</span><br><span class="line"><span class="comment">// SELECT * FROM users WHERE name LIKE '%jin%';</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// условие AND</span></span><br><span class="line">db.Where(<span class="string">"name = ? AND age >= ?"</span>, <span class="string">"jinzhu"</span>, <span class="string">"22"</span>).Find(&users)</span><br><span class="line"><span class="comment">// SELECT * FROM users WHERE name = 'jinzhu' AND age >= 22;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Условие со временем</span></span><br><span class="line">db.Where(<span class="string">"updated_at > ?"</span>, lastWeek).Find(&users)</span><br><span class="line"><span class="comment">// SELECT * FROM users WHERE updated_at > '2000-01-01 00:00:00';</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Условие BETWEEN</span></span><br><span class="line">db.Where(<span class="string">"created_at BETWEEN ? AND ?"</span>, lastWeek, today).Find(&users)</span><br><span class="line"><span class="comment">// SELECT * FROM users WHERE created_at BETWEEN '2000-01-01 00:00:00' AND '2000-01-08 00:00:00';</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="Struct-amp-Map-Условия" class="article-heading"><a href="#Struct-amp-Map-Условия" class="headerlink" title="Struct & Map Условия"></a>Struct & Map Условия<a class="article-anchor" href="#Struct-amp-Map-Условия" aria-hidden="true"></a></h3><figure class="highlight go"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment">// Условие Struct</span></span><br><span class="line">db.Where(&User{Name: <span class="string">"jinzhu"</span>, Age: <span class="number">20</span>}).First(&user)</span><br><span class="line"><span class="comment">// SELECT * FROM users WHERE name = "jinzhu" AND age = 20 ORDER BY id LIMIT 1;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Условие Map</span></span><br><span class="line">db.Where(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">interface</span>{}{<span class="string">"name"</span>: <span class="string">"jinzhu"</span>, <span class="string">"age"</span>: <span class="number">20</span>}).Find(&users)</span><br><span class="line"><span class="comment">// SELECT * FROM users WHERE name = "jinzhu" AND age = 20;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Массив первичных ключей</span></span><br><span class="line">db.Where([]<span class="keyword">int64</span>{<span class="number">20</span>, <span class="number">21</span>, <span class="number">22</span>}).Find(&users)</span><br><span class="line"><span class="comment">// SELECT * FROM users WHERE id IN (20, 21, 22);</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>ПРИМЕЧАНИЕ</strong> При запросе с помощью struct, GORM будет запрашивать только поля без нуля, это означает, что значение поля равное <code>0</code>, <code>''</code>, <code>false</code> или другие <a href="https://tour.golang.org/basics/12" target="_blank" rel="noopener">нулевые значения</a>, не будет использоваться для построения условий запроса, например:</p>
+<figure class="highlight go"><table><tbody><tr><td class="code"><pre><span class="line">db.Where(&User{Name: <span class="string">"jinzhu"</span>, Age: <span class="number">0</span>}).Find(&users)</span><br><span class="line"><span class="comment">// SELECT * FROM users WHERE name = "jinzhu";</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>Вы можете использовать map для построения условий запроса, например:</p>
+<figure class="highlight go"><table><tbody><tr><td class="code"><pre><span class="line">db.Where(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">interface</span>{}{<span class="string">"Name"</span>: <span class="string">"jinzhu"</span>, <span class="string">"Age"</span>: <span class="number">0</span>}).Find(&users)</span><br><span class="line"><span class="comment">// SELECT * FROM users WHERE name = "jinzhu" AND age = 0;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="Строчные-условия" class="article-heading"><a href="#Строчные-условия" class="headerlink" title="Строчные условия"></a><span id="inline_conditions">Строчные условия</span><a class="article-anchor" href="#Строчные-условия" aria-hidden="true"></a></h3><p>Работает аналогично <code>Where</code>.</p>
+<figure class="highlight go"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment">// Получить по первичному ключу (работает только для первичных ключей типа int)</span></span><br><span class="line">db.First(&user, <span class="number">23</span>)</span><br><span class="line"><span class="comment">// SELECT * FROM users WHERE id = 23;</span></span><br><span class="line"><span class="comment">// Получить по первичному ключу, если тип первичного ключа не int</span></span><br><span class="line">db.First(&user, <span class="string">"id = ?"</span>, <span class="string">"string_primary_key"</span>)</span><br><span class="line"><span class="comment">// SELECT * FROM users WHERE id = 'string_primary_key';</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Сырой SQL</span></span><br><span class="line">db.Find(&user, <span class="string">"name = ?"</span>, <span class="string">"jinzhu"</span>)</span><br><span class="line"><span class="comment">// SELECT * FROM users WHERE name = "jinzhu";</span></span><br><span class="line"></span><br><span class="line">db.Find(&users, <span class="string">"name <> ? AND age > ?"</span>, <span class="string">"jinzhu"</span>, <span class="number">20</span>)</span><br><span class="line"><span class="comment">// SELECT * FROM users WHERE name <> "jinzhu" AND age > 20;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Struct</span></span><br><span class="line">db.Find(&users, User{Age: <span class="number">20</span>})</span><br><span class="line"><span class="comment">// SELECT * FROM users WHERE age = 20;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Map</span></span><br><span class="line">db.Find(&users, <span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">interface</span>{}{<span class="string">"age"</span>: <span class="number">20</span>})</span><br><span class="line"><span class="comment">// SELECT * FROM users WHERE age = 20;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="Условия-NOT" class="article-heading"><a href="#Условия-NOT" class="headerlink" title="Условия NOT"></a>Условия NOT<a class="article-anchor" href="#Условия-NOT" aria-hidden="true"></a></h3><p>Построение условия NOT, работает аналогично <code>Where</code></p>
+<figure class="highlight go"><table><tbody><tr><td class="code"><pre><span class="line">db.Not(<span class="string">"name = ?"</span>, <span class="string">"jinzhu"</span>).First(&user)</span><br><span class="line"><span class="comment">// SELECT * FROM users WHERE NOT name = "jinzhu" ORDER BY id LIMIT 1;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Not In ( Не в )</span></span><br><span class="line">db.Not(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">interface</span>{}{<span class="string">"name"</span>: []<span class="keyword">string</span>{<span class="string">"jinzhu"</span>, <span class="string">"jinzhu 2"</span>}}).Find(&users)</span><br><span class="line"><span class="comment">// SELECT * FROM users WHERE name NOT IN ("jinzhu", "jinzhu 2");</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Struct</span></span><br><span class="line">db.Not(User{Name: <span class="string">"jinzhu"</span>, Age: <span class="number">18</span>}).First(&user)</span><br><span class="line"><span class="comment">// SELECT * FROM users WHERE name <> "jinzhu" AND age <> 18 ORDER BY id LIMIT 1;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Не в массиве первичных ключей</span></span><br><span class="line">db.Not([]<span class="keyword">int64</span>{<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>}).First(&user)</span><br><span class="line"><span class="comment">// SELECT * FROM users WHERE id NOT IN (1,2,3) ORDER BY id LIMIT 1;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="Условия-OR" class="article-heading"><a href="#Условия-OR" class="headerlink" title="Условия OR"></a>Условия OR<a class="article-anchor" href="#Условия-OR" aria-hidden="true"></a></h3><figure class="highlight go"><table><tbody><tr><td class="code"><pre><span class="line">db.Where(<span class="string">"role = ?"</span>, <span class="string">"admin"</span>).Or(<span class="string">"role = ?"</span>, <span class="string">"super_admin"</span>).Find(&users)</span><br><span class="line"><span class="comment">// SELECT * FROM users WHERE role = 'admin' OR role = 'super_admin';</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Struct</span></span><br><span class="line">db.Where(<span class="string">"name = 'jinzhu'"</span>).Or(User{Name: <span class="string">"jinzhu 2"</span>, Age: <span class="number">18</span>}).Find(&users)</span><br><span class="line"><span class="comment">// SELECT * FROM users WHERE name = 'jinzhu' OR (name = 'jinzhu 2' AND age = 18);</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Map</span></span><br><span class="line">db.Where(<span class="string">"name = 'jinzhu'"</span>).Or(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">interface</span>{}{<span class="string">"name"</span>: <span class="string">"jinzhu 2"</span>, <span class="string">"age"</span>: <span class="number">18</span>}).Find(&users)</span><br><span class="line"><span class="comment">// SELECT * FROM users WHERE name = 'jinzhu' OR name = 'jinzhu 2';</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>Кроме того, смотрите <a href="advanced_query.html">групповые условия в расширенном запросе</a>, это может проще написать сложные SQL запросы</p>
+<h2 id="Выбор-определенных-полей" class="article-heading"><a href="#Выбор-определенных-полей" class="headerlink" title="Выбор определенных полей"></a>Выбор определенных полей<a class="article-anchor" href="#Выбор-определенных-полей" aria-hidden="true"></a></h2><p>Укажите поля, которые вы хотите получить из базы данных, по умолчанию - выбирает все поля</p>
+<figure class="highlight go"><table><tbody><tr><td class="code"><pre><span class="line">db.Select(<span class="string">"name"</span>, <span class="string">"age"</span>).Find(&users)</span><br><span class="line"><span class="comment">// SELECT name, age FROM users;</span></span><br><span class="line"></span><br><span class="line">db.Select([]<span class="keyword">string</span>{<span class="string">"name"</span>, <span class="string">"age"</span>}).Find(&users)</span><br><span class="line"><span class="comment">// SELECT name, age FROM users;</span></span><br><span class="line"></span><br><span class="line">db.Table(<span class="string">"users"</span>).Select(<span class="string">"COALESCE(age,?)"</span>, <span class="number">42</span>).Rows()</span><br><span class="line"><span class="comment">// SELECT COALESCE(age,'42') FROM users;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="Порядок-сортировки" class="article-heading"><a href="#Порядок-сортировки" class="headerlink" title="Порядок сортировки"></a>Порядок сортировки<a class="article-anchor" href="#Порядок-сортировки" aria-hidden="true"></a></h2><p>Укажите порядок при получении записей из базы данных</p>
+<figure class="highlight go"><table><tbody><tr><td class="code"><pre><span class="line">db.Order(<span class="string">"age desc, name"</span>).Find(&users)</span><br><span class="line"><span class="comment">// SELECT * FROM users ORDER BY age desc, name;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Несколько условий сортировки</span></span><br><span class="line">db.Order(<span class="string">"age desc"</span>).Order(<span class="string">"name"</span>).Find(&users)</span><br><span class="line"><span class="comment">// SELECT * FROM users ORDER BY age desc, name;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="Limit-amp-Offset" class="article-heading"><a href="#Limit-amp-Offset" class="headerlink" title="Limit & Offset"></a>Limit & Offset<a class="article-anchor" href="#Limit-amp-Offset" aria-hidden="true"></a></h2><p><code>Limit</code> указывает максимальное количество записей для извлечения, <code>Offset</code> указывает количество пропущенных записей перед началом возврата записей</p>
+<figure class="highlight go"><table><tbody><tr><td class="code"><pre><span class="line">db.Limit(<span class="number">3</span>).Find(&users)</span><br><span class="line"><span class="comment">// SELECT * FROM users LIMIT 3;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Отключить ограничения количества вывода при помощи условия -1</span></span><br><span class="line">db.Limit(<span class="number">10</span>).Find(&users1).Limit(<span class="number">-1</span>).Find(&users2)</span><br><span class="line"><span class="comment">// SELECT * FROM users LIMIT 10; (users1)</span></span><br><span class="line"><span class="comment">// SELECT * FROM users; (users2)</span></span><br><span class="line"></span><br><span class="line">db.Offset(<span class="number">3</span>).Find(&users)</span><br><span class="line"><span class="comment">// SELECT * FROM users OFFSET 3;</span></span><br><span class="line"></span><br><span class="line">db.Limit(<span class="number">10</span>).Offset(<span class="number">5</span>).Find(&users)</span><br><span class="line"><span class="comment">// SELECT * FROM users OFFSET 5 LIMIT 10;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Отключить условие смещения вывода при помощи условия -1</span></span><br><span class="line">db.Offset(<span class="number">10</span>).Find(&users1).Offset(<span class="number">-1</span>).Find(&users2)</span><br><span class="line"><span class="comment">// SELECT * FROM users OFFSET 10; (users1)</span></span><br><span class="line"><span class="comment">// SELECT * FROM users; (users2)</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="Group-amp-Having" class="article-heading"><a href="#Group-amp-Having" class="headerlink" title="Group & Having"></a>Group & Having<a class="article-anchor" href="#Group-amp-Having" aria-hidden="true"></a></h2><figure class="highlight go"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> result <span class="keyword">struct</span> {</span><br><span class="line">  Date  time.Time</span><br><span class="line">  Total <span class="keyword">int</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">db.Model(&User{}).Select(<span class="string">"name, sum(age) as total"</span>).Where(<span class="string">"name LIKE ?"</span>, <span class="string">"group%"</span>).Group(<span class="string">"name"</span>).First(&result)</span><br><span class="line"><span class="comment">// SELECT name, sum(age) as total FROM `users` WHERE name LIKE "group%" GROUP BY `name`</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">db.Model(&User{}).Select(<span class="string">"name, sum(age) as total"</span>).Group(<span class="string">"name"</span>).Having(<span class="string">"name = ?"</span>, <span class="string">"group"</span>).Find(&result)</span><br><span class="line"><span class="comment">// SELECT name, sum(age) as total FROM `users` GROUP BY `name` HAVING name = "group"</span></span><br><span class="line"></span><br><span class="line">rows, err := db.Table(<span class="string">"orders"</span>).Select(<span class="string">"date(created_at) as date, sum(amount) as total"</span>).Group(<span class="string">"date(created_at)"</span>).Rows()</span><br><span class="line"><span class="keyword">for</span> rows.Next() {</span><br><span class="line">  ...</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">rows, err := db.Table(<span class="string">"orders"</span>).Select(<span class="string">"date(created_at) as date, sum(amount) as total"</span>).Group(<span class="string">"date(created_at)"</span>).Having(<span class="string">"sum(amount) > ?"</span>, <span class="number">100</span>).Rows()</span><br><span class="line"><span class="keyword">for</span> rows.Next() {</span><br><span class="line">  ...</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Result <span class="keyword">struct</span> {</span><br><span class="line">  Date  time.Time</span><br><span class="line">  Total <span class="keyword">int64</span></span><br><span class="line">}</span><br><span class="line">db.Table(<span class="string">"orders"</span>).Select(<span class="string">"date(created_at) as date, sum(amount) as total"</span>).Group(<span class="string">"date(created_at)"</span>).Having(<span class="string">"sum(amount) > ?"</span>, <span class="number">100</span>).Scan(&results)</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="Distinct" class="article-heading"><a href="#Distinct" class="headerlink" title="Distinct"></a>Distinct<a class="article-anchor" href="#Distinct" aria-hidden="true"></a></h2><p>Выбор уникальных значений из модели</p>
+<figure class="highlight go"><table><tbody><tr><td class="code"><pre><span class="line">db.Distinct(<span class="string">"name"</span>, <span class="string">"age"</span>).Order(<span class="string">"name, age desc"</span>).Find(&results)</span><br></pre></td></tr></tbody></table></figure>
+
+<p><code>Distinct</code> также работает с <a href="advanced_query.html#pluck"><code>Pluck</code></a>, <a href="advanced_query.html#count"><code>Count</code></a></p>
+<h2 id="Joins" class="article-heading"><a href="#Joins" class="headerlink" title="Joins"></a>Joins<a class="article-anchor" href="#Joins" aria-hidden="true"></a></h2><p>Указывает условия join</p>
+<figure class="highlight go"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> result <span class="keyword">struct</span> {</span><br><span class="line">  Name  <span class="keyword">string</span></span><br><span class="line">  Email <span class="keyword">string</span></span><br><span class="line">}</span><br><span class="line">db.Model(&User{}).Select(<span class="string">"users.name, emails.email"</span>).Joins(<span class="string">"left join emails on emails.user_id = users.id"</span>).Scan(&result{})</span><br><span class="line"><span class="comment">// SELECT users.name, emails.email FROM `users` left join emails on emails.user_id = users.id</span></span><br><span class="line"></span><br><span class="line">rows, err := db.Table(<span class="string">"users"</span>).Select(<span class="string">"users.name, emails.email"</span>).Joins(<span class="string">"left join emails on emails.user_id = users.id"</span>).Rows()</span><br><span class="line"><span class="keyword">for</span> rows.Next() {</span><br><span class="line">  ...</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">db.Table(<span class="string">"users"</span>).Select(<span class="string">"users.name, emails.email"</span>).Joins(<span class="string">"left join emails on emails.user_id = users.id"</span>).Scan(&results)</span><br><span class="line"></span><br><span class="line"><span class="comment">// множество join с параметрами</span></span><br><span class="line">db.Joins(<span class="string">"JOIN emails ON emails.user_id = users.id AND emails.email = ?"</span>, <span class="string">"jinzhu@example.org"</span>).Joins(<span class="string">"JOIN credit_cards ON credit_cards.user_id = users.id"</span>).Where(<span class="string">"credit_cards.number = ?"</span>, <span class="string">"411111111111"</span>).Find(&user)</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="Joins-Preloading" class="article-heading"><a href="#Joins-Preloading" class="headerlink" title="Joins Preloading"></a>Joins Preloading<a class="article-anchor" href="#Joins-Preloading" aria-hidden="true"></a></h3><p>Вы можете использовать <code>Joins</code> для предзагрузки связей в одном SQL запросе, например:</p>
+<figure class="highlight go"><table><tbody><tr><td class="code"><pre><span class="line">db.Joins(<span class="string">"Company"</span>).Find(&users)</span><br><span class="line"><span class="comment">// SELECT `users`.`id`,`users`.`name`,`users`.`age`,`Company`.`id` AS `Company__id`,`Company`.`name` AS `Company__name` FROM `users` LEFT JOIN `companies` AS `Company` ON `users`.`company_id` = `Company`.`id`;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>Смотрите <a href="preload.html">Предзагрузка (Нетерпеливая загрузка)</a> для подробностей</p>
+<h2 id="Scan" class="article-heading"><a href="#Scan" class="headerlink" title="Scan"></a><span id="scan">Scan</span><a class="article-anchor" href="#Scan" aria-hidden="true"></a></h2><p>Записать результат в struct, работает аналогично <code>Find</code></p>
+<figure class="highlight go"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> Result <span class="keyword">struct</span> {</span><br><span class="line">  Name <span class="keyword">string</span></span><br><span class="line">  Age  <span class="keyword">int</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> result Result</span><br><span class="line">db.Table(<span class="string">"users"</span>).Select(<span class="string">"name"</span>, <span class="string">"age"</span>).Where(<span class="string">"name = ?"</span>, <span class="string">"Antonio"</span>).Scan(&result)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Чистый SQL</span></span><br><span class="line">db.Raw(<span class="string">"SELECT name, age FROM users WHERE name = ?"</span>, <span class="string">"Antonio"</span>).Scan(&result)</span><br></pre></td></tr></tbody></table></figure>
+</body></html>
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2020-07-31T02:43:18.497Z" itemprop="dateModified">Последнее обновление: 2020-07-31</time>
+<a href="create.html" class="article-footer-prev" title="Создать"><i class="fa fa-chevron-left"></i><span>Пред.</span></a><a href="advanced_query.html" class="article-footer-next" title="Расширенный запрос"><span>След.</span><i class="fa fa-chevron-right"></i></a>
+              </footer>
+              
+<section id="comments">
+<div id="disqus_thread"></div>
+</sction>
+
+<script>
+var disqus_config = function () {
+this.page.url = 'http://gorm.io/ru_RU/docs/query.html';
+this.page.identifier = 'http://gorm.io/ru_RU/docs/query.html';
+this.language = 'ru';
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://gormv2.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+
+
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <div id="sidebar-ad-wrapper" class="tagmanager_ad"></div>
+              <strong class="sidebar-title">Содержимое</strong>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Получение-одного-объекта"><span class="toc-text">Получение одного объекта</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Получение-объектов"><span class="toc-text">Получение объектов</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Условия"><span class="toc-text">Условия</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Строковые-условия"><span class="toc-text">Строковые условия</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Struct-amp-Map-Условия"><span class="toc-text">Struct &amp; Map Условия</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Строчные-условия"><span class="toc-text">Строчные условия</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Условия-NOT"><span class="toc-text">Условия NOT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Условия-OR"><span class="toc-text">Условия OR</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Выбор-определенных-полей"><span class="toc-text">Выбор определенных полей</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Порядок-сортировки"><span class="toc-text">Порядок сортировки</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Limit-amp-Offset"><span class="toc-text">Limit &amp; Offset</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Group-amp-Having"><span class="toc-text">Group &amp; Having</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Distinct"><span class="toc-text">Distinct</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Joins"><span class="toc-text">Joins</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Joins-Preloading"><span class="toc-text">Joins Preloading</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Scan"><span class="toc-text">Scan</span></a></li></ol>
+
+              
+                <a href="https://translate.gorm.io/project/go-gorm/ru" target="_blank" id="article-improve">
+                  Улучшить эту страницу
+                </a>
+              
+              <a href="#" id="article-toc-top">Вернуться к началу</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner">
+    <strong class="sidebar-title">Начало работы</strong><a href="index.html" class="sidebar-link">Обзор</a><a href="models.html" class="sidebar-link">Объявление моделей</a><a href="connecting_to_the_database.html" class="sidebar-link">Подключение к базе данных</a><strong class="sidebar-title">CRUD интерфейс</strong><a href="create.html" class="sidebar-link">Создать</a><a href="query.html" class="sidebar-link current">Запрос</a><a href="advanced_query.html" class="sidebar-link">Расширенный запрос</a><a href="update.html" class="sidebar-link">Обновление</a><a href="delete.html" class="sidebar-link">Удалить</a><a href="sql_builder.html" class="sidebar-link">Raw SQL и конструктор SQL</a><strong class="sidebar-title">Связи</strong><a href="belongs_to.html" class="sidebar-link">Belongs To</a><a href="has_one.html" class="sidebar-link">Has One</a><a href="has_many.html" class="sidebar-link">Has Many</a><a href="many_to_many.html" class="sidebar-link">Many To Many</a><a href="associations.html" class="sidebar-link">Режим связи</a><a href="preload.html" class="sidebar-link">Предзагрузка (Нетерпеливая загрузка)</a><strong class="sidebar-title">Обучение</strong><a href="context.html" class="sidebar-link">Контекст</a><a href="error_handling.html" class="sidebar-link">Обработка ошибок</a><a href="method_chaining.html" class="sidebar-link">Цепочки методов</a><a href="session.html" class="sidebar-link">Сессия</a><a href="hooks.html" class="sidebar-link">Хуки</a><a href="transactions.html" class="sidebar-link">Транзакции</a><a href="migration.html" class="sidebar-link">Миграция</a><a href="logger.html" class="sidebar-link">Logger</a><a href="generic_interface.html" class="sidebar-link">Универсальный интерфейс базы данных</a><a href="performance.html" class="sidebar-link">Производительность</a><a href="data_types.html" class="sidebar-link">Типы данных</a><a href="scopes.html" class="sidebar-link">Области</a><a href="conventions.html" class="sidebar-link">Преобразования</a><a href="settings.html" class="sidebar-link">Настройки</a><strong class="sidebar-title">Дополнительные возможности</strong><a href="prometheus.html" class="sidebar-link">Prometheus</a><a href="hints.html" class="sidebar-link">Подсказки</a><a href="indexes.html" class="sidebar-link">Индексы</a><a href="constraints.html" class="sidebar-link">Ограничения</a><a href="composite_primary_key.html" class="sidebar-link">Композитный первичный ключ</a><a href="security.html" class="sidebar-link">Безопасность</a><a href="gorm_config.html" class="sidebar-link">Настройки GORM</a><a href="write_plugins.html" class="sidebar-link">Написание плагинов</a><a href="write_driver.html" class="sidebar-link">Написание драйверов</a><a href="changelog.html" class="sidebar-link">История изменений</a><a href="/community.html" class="sidebar-link">Сообщество</a><a href="/contribute.html" class="sidebar-link">Внести вклад</a><a href="/contribute.html#Translate-this-site" class="sidebar-link">Перевести текущий сайт</a>
+  </div>
+</aside>
+
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2013~2020 <a href="https://github.com/jinzhu" target="_blank">Jinzhu</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a>.<br>
+    </div>
+    <div id="footer-links">
+      <a href="https://twitter.com/zhangjinzhu" class="footer-link" target="_blank"><i class="fa fa-twitter"></i></a>
+      <a href="https://github.com/go-gorm/gorm" class="footer-link" target="_blank"><i class="fa fa-github-alt"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <li class="mobile-nav-item">
+        <a href="/" class="mobile-nav-link" rel="external" target="_blank"><i class="fa fa-home"></i>Главная</a>
+      </li>
+      <a href="/ru_RU/docs/" class="mobile-nav-link"><i class="fa fa-book"></i>Документация</a><a href="/ru_RU/community.html" class="mobile-nav-link"><i class="fa fa-slack"></i>Сообщество</a><a href="https://pkg.go.dev/gorm.io/gorm" class="mobile-nav-link" target="_blank"><i class="fa fa-cogs"></i>API</a><a href="/ru_RU/contribute.html" class="mobile-nav-link"><i class="fa fa-rocket"></i>Внести вклад</a>
+    </ul>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>Русский</span></span>
+    <select id="mobile-lang-select" data-canonical="docs/query.html">
+      
+        <option value="en">English</option>
+      
+        <option value="zh_CN">简体中文</option>
+      
+        <option value="de_DE">Deutsch</option>
+      
+        <option value="es_ES">Español</option>
+      
+        <option value="id_ID">bahasa Indonesia</option>
+      
+        <option value="it_IT">Italiano</option>
+      
+        <option value="ja_JP">日本語</option>
+      
+        <option value="ru_RU" selected>Русский</option>
+      
+        <option value="fr_FR">French</option>
+      
+        <option value="ko_KR">한국어</option>
+      
+    </select>
+  </div>
+</nav>
+
+  <!-- Scripts -->
+<!-- build:js build/js/main.js -->
+
+<script src="/js/lang_select.js"></script>
+
+
+<script src="/js/toc.js"></script>
+
+
+<script src="/js/mobile_nav.js"></script>
+
+
+<script src="//code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+<script src="/js/code_expander.js"></script>
+
+
+<script src="/js/404_fix.js"></script>
+
+<!-- endbuild -->
+
+<!-- Algolia -->
+
+
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WSNPD75"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+
+</body>
+</html>
