@@ -5,6 +5,9 @@
   "hexo": {
     "version": "4.2.1"
   },
+  "scripts": {
+    "dev": "hexo serve"
+  },
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
     "hexo": "^4.2.1",
